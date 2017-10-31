@@ -19,8 +19,8 @@ namespace yad2_jump
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Navigate().GoToUrl("http://www.yad2.co.il/");
             loginpage validation = new loginpage(driver);
-            validation.typeusername();
-            validation.typepassword();
+            validation.typeusername("noamkonig@gmail.com");
+            validation.typepassword("noam4166");
             validation.clickonlogin();
             driver.FindElement(By.XPath(" //img[contains(@src,'rechev.png')]")).Click();
             driver.FindElement(By.XPath(" //div[contains(text(),'השרון')]")).Click();
