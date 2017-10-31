@@ -18,8 +18,9 @@ namespace yad2_jump
             //explicitly wait
             //page factory
             IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
             driver.Navigate().GoToUrl("http://www.yad2.co.il/");
+            driver.Manage().Window.Maximize();
             LoginPage loginPage = new LoginPage(driver);
             loginPage.TypeUserName("noamkonig@gmail.com");
             loginPage.TypePassword("noam4166");

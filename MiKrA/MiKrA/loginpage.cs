@@ -21,14 +21,15 @@ public class LoginPage
     }
     public LoginPage TypeUserName(string user_name)
     {
+        //stale element reference exception 
         driver.FindElement(usernameTxb).SendKeys(user_name);
-        return this;
+        return new LoginPage(driver);
     }
     public LoginPage TypePassword(string sysma)
     {
         driver.FindElement(passwordclick).Click();
         driver.FindElement(passwordwriteTxb).SendKeys(sysma);
-        return this;
+        return new LoginPage(driver);
     }
     public MyPersonalAreaPage ClickOnLogin()
     {
