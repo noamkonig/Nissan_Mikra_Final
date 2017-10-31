@@ -57,7 +57,8 @@
     <Compile Include="..\..\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
-    <Compile Include="loginpage.cs" />
+    <Compile Include="MyPersonalAreaPage.cs" />
+    <Compile Include="LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
