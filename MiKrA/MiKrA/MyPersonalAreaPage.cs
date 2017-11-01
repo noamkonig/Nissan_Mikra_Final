@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-public class MyPersonalAreaPage
+public class MyPersonalAreaPage : PageObject
 {
-    IWebDriver driver;
     By car = By.XPath("//img[contains(@src,'rechev.png')]");
-    public MyPersonalAreaPage(IWebDriver driver)
+    public MyPersonalAreaPage(IWebDriver driver) : base(driver)
     {
-        this.driver = driver;
     }
     public void ClickOnCar()
     {

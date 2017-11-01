@@ -14,21 +14,19 @@ namespace yad2_jump
     {
         static void Main(string[] args)
         {
-            IWebElement emailfield;
-            IWebElement passfield;
+            //explicitly wait
+            //page factory
             IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
             driver.Navigate().GoToUrl("http://www.yad2.co.il/");
-            emailfield = driver.FindElement(By.Name("Username"));
-            emailfield.SendKeys("noamkonig@gmail.com");
-            driver.FindElement(By.XPath("//*[@id=\"mockpass\"]/td/input")).Click();
-            driver.FindElement(By.Name("Password")).SendKeys("noam4166");
-            driver.FindElement(By.Name("login")).Click();
-            driver.FindElement(By.XPath(" //img[contains(@src,'rechev.png')]")).Click();
-            driver.FindElement(By.XPath(" //*[@id='feed']/tbody/tr[2]/td[1]/div")).Click();
+            driver.Manage().Window.Maximize();
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.TypeUserName("noamkonig@gmail.com");
+            loginPage.TypePassword("noam4166");
+            loginPage.ClickOnLogin().ClickOnCar();
+            driver.FindElements(By.XPath("//div[@id='personalAreaFeed']//tr[@data-orderid]"))[0].Click();
             driver.FindElement(By.XPath(" //*[@id='bounceRatingOrderBtn']/span")).Click();
-            Thread.Sleep(10000);
-            driver.Quit();
+            Thread.Sleep(2500);
         }
     }
 }

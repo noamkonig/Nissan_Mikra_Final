@@ -7,33 +7,31 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 
-public class LoginPage
+public class LoginPage : PageObject
 {
-    IWebDriver driver;
     By usernameTxb = By.Name("Username");
     By passwordwriteTxb = By.Name("Password");
     By passwordclick = By.XPath("//*[@id=\"mockpass\"]/td/input");
     By LoginBtn = By.Name("login");
 
-    public LoginPage(IWebDriver driver)
+    public LoginPage(IWebDriver driver) : base(driver)
     {
-        this.driver = driver;
     }
     public LoginPage TypeUserName(string user_name)
     {
         //stale element reference exception 
-        driver.FindElement(usernameTxb).SendKeys(user_name);
-        return new LoginPage(driver);
+        WaitForElement(usernameTxb,10).SendKeys(user_name);
+        return this;
     }
     public LoginPage TypePassword(string sysma)
     {
-        driver.FindElement(passwordclick).Click();
-        driver.FindElement(passwordwriteTxb).SendKeys(sysma);
-        return new LoginPage(driver);
+        WaitForElement(passwordclick,10).Click();
+        WaitForElement(passwordwriteTxb,10).SendKeys(sysma);
+        return this;
     }
     public MyPersonalAreaPage ClickOnLogin()
     {
-        driver.FindElement(LoginBtn).Click();
+        WaitForElement(LoginBtn,10).Click();
         return new MyPersonalAreaPage(driver);
     }
 }
