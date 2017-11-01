@@ -17,7 +17,7 @@ namespace yad2_jump
             //explicitly wait
             //page factory
             IWebDriver driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
+            
             driver.Navigate().GoToUrl("http://www.yad2.co.il/");
             driver.Manage().Window.Maximize();
             LoginPage loginPage = new LoginPage(driver);
@@ -25,7 +25,8 @@ namespace yad2_jump
             loginPage.TypePassword("noam4166");
             loginPage.ClickOnLogin().ClickOnCar();
             driver.FindElements(By.XPath("//div[@id='personalAreaFeed']//tr[@data-orderid]"))[0].Click();
-            driver.FindElement(By.XPath(" //*[@id='bounceRatingOrderBtn']/span")).Click();
+            driver.SwitchTo().Frame(driver.FindElement(By.Id("bounceRatingOrderBtn")));
+            driver.FindElement(By.XPath(" //*[contains(text(),'הקפצת')]")).Click();
             Thread.Sleep(2500);
         }
     }

@@ -14,7 +14,7 @@ public class MyPersonalAreaPage : PageObject
     }
     public void ClickOnCar()
     {
-        driver.FindElement(car).Click();
+        WaitForElement(car,30).Click();
     }
 }
 

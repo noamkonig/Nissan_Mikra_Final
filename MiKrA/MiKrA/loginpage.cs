@@ -20,18 +20,18 @@ public class LoginPage : PageObject
     public LoginPage TypeUserName(string user_name)
     {
         //stale element reference exception 
-        WaitForElement(usernameTxb,10).SendKeys(user_name);
+        WaitForElement(usernameTxb,30).SendKeys(user_name);
         return this;
     }
     public LoginPage TypePassword(string sysma)
     {
-        WaitForElement(passwordclick,10).Click();
-        WaitForElement(passwordwriteTxb,10).SendKeys(sysma);
+        WaitForElement(passwordclick,30).Click();
+        WaitForElement(passwordwriteTxb,30).SendKeys(sysma);
         return this;
     }
     public MyPersonalAreaPage ClickOnLogin()
     {
-        WaitForElement(LoginBtn,10).Click();
+        WaitForElement(LoginBtn,30).Click();
         return new MyPersonalAreaPage(driver);
     }
 }
