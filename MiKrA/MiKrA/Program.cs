@@ -25,7 +25,7 @@ namespace yad2_jump
             loginPage.TypePassword("noam4166");
             loginPage.ClickOnLogin().ClickOnCar();
             driver.FindElements(By.XPath("//div[@id='personalAreaFeed']//tr[@data-orderid]"))[0].Click();
-            driver.SwitchTo().Frame(driver.FindElement(By.Id("bounceRatingOrderBtn")));
+            driver.SwitchTo().Frame(driver.FindElement(By.XPath("//*[@id='feed']/tbody/tr[3]/td/iframe")));
             driver.FindElement(By.XPath(" //*[contains(text(),'הקפצת')]")).Click();
             Thread.Sleep(2500);
         }
